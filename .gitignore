@@ -9,6 +9,9 @@
 *.dylib
 *.universal
 
+# Ignore dependency files
+*.d
+
 # Compiled Dynamic libraries
 *.so
 *.dylib
