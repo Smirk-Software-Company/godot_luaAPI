@@ -221,6 +221,7 @@ Ref<LuaError> LuaDefaultObjectMetatable::__newindex(Object *obj, Ref<LuaAPI> api
 			return dynamic_cast<LuaError *>(ret.operator Object *());
 #endif
 		}
+		return nullptr;
 	}
 
 	Array fields = Array();
@@ -233,7 +234,8 @@ Ref<LuaError> LuaDefaultObjectMetatable::__newindex(Object *obj, Ref<LuaAPI> api
 		return nullptr;
 	}
 
-	return LuaError::newError(vformat("Attempt to set field '%s' on object of type '%s' which is not a valid field.", index, obj->get_class()), LuaError::ERR_RUNTIME);
+	return nullptr;
+	// return LuaError::newError(vformat("Attempt to set field '%s' on object of type '%s' which is not a valid field.", index, obj->get_class()), LuaError::ERR_RUNTIME);
 }
 
 Variant LuaDefaultObjectMetatable::__call(Object *obj, Ref<LuaAPI> api, Ref<LuaTuple> args) {

@@ -544,7 +544,10 @@ Variant LuaState::getVariant(lua_State *state, int index) {
 			break;
 		}
 		default:
-			result = LuaError::newError(vformat("Unsupported lua type '%d' in LuaState::getVariant", type), LuaError::ERR_RUNTIME);
+			// TODO: this fires a bunch and causes lots of slowdowns in our api
+			// result = LuaError::newError(vformat("Unsupported lua type '%d' in LuaState::getVariant", type), LuaError::ERR_RUNTIME);
+			// print_error(vformat("Unsupported lua type '%d' in LuaState::getVariant", type) + "\n");
+			break;
 	}
 	return result;
 }
