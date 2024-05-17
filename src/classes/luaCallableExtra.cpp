@@ -68,7 +68,7 @@ int LuaCallableExtra::call(lua_State *state) {
 	int l_argc = lua_gettop(state) - 1; // We subtract 1 because the LuaCallableExtra is counted
 	int noneMulty = l_argc;
 	LuaCallableExtra *func = (LuaCallableExtra *)LuaState::getVariant(state, 1).operator Object *();
-	if (func == nullptr) {
+	if (func == nullptr || !func->function.is_valid()) {
 		lua_pushstring(state, "Error during LuaCallableExtra::call func==null");
 		lua_error(state);
 		return 0;
